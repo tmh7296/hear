@@ -1,0 +1,9 @@
+#post-container{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.25rem;
+    border-radius: .6rem;
+    margin-bottom: 1.25rem;
+}

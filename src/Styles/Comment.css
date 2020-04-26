@@ -1,0 +1,41 @@
+.comment-container{
+    display: flex;
+    flex-direction:column;
+    padding-left: 2.75rem;
+    padding-right: 2.75rem;
+    margin-top: 1.5rem;
+    font-size: .9rem;
+}
+
+.comment-header{
+    color: #2C2C2C;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: .5rem;
+}
+
+.comment-header a{
+    text-decoration: none;
+    color: #45AAF1;
+}
+
+.comment-text{
+    color: #2C2C2C;
+}
+
+.username{
+    margin-right: 1rem;
+}
+
+.vote-count{
+    margin-right: 1rem;
+}
+
+.timestamp{
+
+}
+
+.delete-icon{
+    
+}

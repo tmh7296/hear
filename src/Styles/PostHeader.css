@@ -1,0 +1,33 @@
+#post-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    margin: 1.25rem;
+}
+
+#subreddit-name{
+    font-size: .8rem;
+    color: #828282;
+}
+
+#upvotes-and-title{
+    color: #2C2C2C;
+    margin-top: 1rem;
+    display: flex;
+    order: 1;
+    flex-direction: row;
+}
+
+#upvotes{
+    font-size: 1.2rem;
+    display: flex;
+}
+
+#upvotes span{
+    align-self: flex-end;
+}
+
+#post-title{
+    margin-left: 1.25rem;
+    font-size: 1.5rem;
+}

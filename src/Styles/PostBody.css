@@ -1,0 +1,25 @@
+#post-body{
+    width: 100%;
+    background-color: #F1F1F1;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    padding-left: 2.75rem;
+    padding-right: 2.75rem;
+    border-radius: .6rem;
+    font-size: .9rem;
+    color: #7D7D7D;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+#comment-count{
+    color: #2C2C2C;
+    display: flex;
+    margin-top: 1rem;
+}
+
+#comment-svg{
+    align-self: flex-end;
+    margin-right: .5rem;
+}
