@@ -4,15 +4,12 @@ import PostComments from './PostComments';
 import '../Styles/PostContainer.css';
 
 class PostContainer extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
+        const { comments, body, commentCount } = this.props;
         return (
             <div id="post-container">
-                <PostBody />
-                <PostComments />
+                <PostBody body={body} commentCount={commentCount}/>
+                <PostComments comments={comments} />
             </div>
         );
     }

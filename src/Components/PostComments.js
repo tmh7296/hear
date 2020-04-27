@@ -3,16 +3,13 @@ import Comment from './Comment';
 import '../Styles/PostComments.css';
 
 class PostComments extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
+        const { comments } = this.props;
+        const commentTree = comments.map(comment => <Comment comment={comment} key={comment.id} />);
+
         return (
-            <div id="comment-container">
-                <Comment />
-                <Comment />
-                <Comment />
+            <div id="comments-container">
+                {commentTree}
             </div>
         )
     }

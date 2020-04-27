@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import { MdModeComment } from 'react-icons/md';
+import { parseTextForNewLines } from '../Utils/stringUtils';
 import '../Styles/PostBody.css';
 
 class PostBody extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
+        const { body, commentCount } = this.props;
+
         return (
             <div id="post-body">
-                <span>Post Body</span>
-                <div id="comment-count"><MdModeComment id="comment-svg"/>Comments</div>
+                {parseTextForNewLines(body)}
+                <div id="comment-count"><MdModeComment id="comment-svg"/>{`${commentCount} Comments`}</div>
             </div>
         );
     }
