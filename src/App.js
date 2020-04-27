@@ -3,6 +3,7 @@ import './App.css';
 import PostContainer from './Components/PostContainer';
 import PostHeader from './Components/PostHeader';
 import Error from './Components/Error';
+import Spinner from 'react-spinkit';
 
 class App extends Component {
   state = {
@@ -58,7 +59,7 @@ class App extends Component {
     const { loading, snapshotData, commentCount, error } = this.state;
 
     return (
-      !loading && (
+      loading ? <Spinner name='circle' id="loading" /> : (
         error ? <Error /> : 
         <div className="App">
           <div id="content">
@@ -70,7 +71,7 @@ class App extends Component {
             <PostContainer comments={snapshotData.comments} body={snapshotData.selftext} commentCount={commentCount}/>
           </div>
         </div>
-        )
+      )
     );
   }
 }
