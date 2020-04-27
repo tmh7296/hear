@@ -1,27 +1,37 @@
 import React, { Component } from 'react';
 import './App.css';
-import PostContainer from './Components/PostContainer'
-import PostHeader from './Components/PostHeader'
+import PostContainer from './Components/PostContainer';
+import PostHeader from './Components/PostHeader';
+import Error from './Components/Error';
 
 class App extends Component {
   state = {
     snapshotData: null,
     loading: true,
     commentCount: 0,
+    error: false
   };
 
   componentDidMount() {
+    // asynchronously load the data
     const getJson = new XMLHttpRequest();
     getJson.onload = (event) => {
       const { currentTarget : { responseText }} = event;
-      const data = this.nestComments(JSON.parse(responseText));
-      this.setState({snapshotData: data, loading: false });
+      try{
+        const data = this.nestComments(JSON.parse(responseText));
+        this.setState({snapshotData: data});
+      } catch (err) {
+        this.setState({ error: true});
+      } finally {
+        this.setState({ loading: false});
+      }
     }
     getJson.open('get', './reddit.json', true);
     getJson.send();
   }
   
   nestComments = (data) => {
+    // nest comments in a way that makes logical sense to render
     const { comments } = data;
     this.setState({ commentCount: comments.length })
     const commentList = [...comments];
@@ -45,20 +55,22 @@ class App extends Component {
 }
 
   render() {
-    const { loading, snapshotData, commentCount } = this.state;
+    const { loading, snapshotData, commentCount, error } = this.state;
 
     return (
-      !loading &&
-      <div className="App">
-        <div id="content">
-          <PostHeader
-            subreddit={snapshotData.subreddit_name_prefixed}
-            title={snapshotData.title}
-            score={snapshotData.score}
-          />
-          <PostContainer comments={snapshotData.comments} body={snapshotData.selftext} commentCount={commentCount}/>
+      !loading && (
+        error ? <Error /> : 
+        <div className="App">
+          <div id="content">
+            <PostHeader
+              subreddit={snapshotData.subreddit_name_prefixed}
+              title={snapshotData.title}
+              score={snapshotData.score}
+            />
+            <PostContainer comments={snapshotData.comments} body={snapshotData.selftext} commentCount={commentCount}/>
+          </div>
         </div>
-      </div>
+        )
     );
   }
 }
